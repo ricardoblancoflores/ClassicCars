@@ -3,6 +3,9 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { StoreModule } from './store/store.module';
+import { HttpClientModule } from '@angular/common/http';
+import { Cart } from './model/cart';
 
 @NgModule({
   declarations: [
@@ -10,9 +13,11 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    StoreModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [ Cart ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

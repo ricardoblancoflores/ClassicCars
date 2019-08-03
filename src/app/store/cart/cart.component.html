@@ -1,0 +1,83 @@
+<nav class="navbar h6 p-3 navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="#">ClassicCars</a>
+    <h3 class="navar-brand text-white d-block mx-auto">Cart Detail</h3>
+    <a class="nav-link text-white" routerLink="/store" routerLinkActive="active" >Back to shop</a>
+  </div>
+</nav>
+<div class="container mt-5">
+  <div class="row mt-1">
+    <div class="col-md-8 mx-auto col-lg-8 col-sm-12 mt-5">
+      <div class="table-responsive">
+        <table class="table border border-light va-m">
+          <thead>
+            <tr><th class="text-center" colspan="5">Products</th></tr>
+            <tr>
+              <th>Photo</th>
+              <th>Name</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of cartItems; let i = index">
+              <td>
+                <img src="{{item.product.image}}" width="80px" class="img-fluid-desc d-block">
+              </td>
+              <td>{{item.product.productName}}</td>
+              <td>{{item.product.MSRP | currency}}</td>
+              <td>
+                <div class="btn-group mx-auto" role="group" aria-label="Basic example">
+                  <button type="button" class="btn btn-sm btn-primary w-15"
+                  (click)="editQuantity(item, 'decrease')" [disabled]="item.quantity == 1">
+                    <i class="fas fa-arrow-circle-down p-0 m-0"></i>
+                  </button>
+                  <!--<input type="number" disabled value="{{item.quantity}}" class="btn btn-transparent form-control-sm w-15">-->
+                  <label class="form-control-sm text-center mx-2 py-2" for="">{{item.quantity}}</label>
+                  <button type="button" class="btn btn-sm btn-primary w-15" (click)="editQuantity(item, 'increase')">
+                    <i class="fas fa-arrow-circle-up p-0 m-0"></i>
+                  </button>
+                </div>
+              </td>
+              <td class="align-items-center">
+                <button class="btn btn-transparent form-control-sm" (click)="deleteItem(i)">
+                  <i class="text-center text-danger d-block fas fa-trash-alt mx-auto"
+                  ></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-md-4 col-lg-4 col-sm-8 mx-auto mt-5">
+      <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQwAAAC8CAMAAAC672BgAAAAnFBMVEX////NMwHLIADMKwDsu7DqvbbKEwDLIgD88/HxzcLacVnqsabYblzprqD89/XZcWH78Orz0sj56eTuw7n129Xnp5n24Nrjm4vjlobVWj7TTyzRRh7WXj7qtanSSSTtv7PPOQXQQhvVYEjdgW3finrQOgDPPBLYalLgh3XcfWbVVDTUTSngjXnIAADuxsDfgmzjn5TYa1rTVz/lpZsOBeDvAAAEr0lEQVR4nO3cbXuaMBQGYEwcKBYqvrXdZq2102rn1m3//79NkVRsDRpGPIfsuT9ael0nxwh5OcHzAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAqpg6AAIDEWyIQKT8vfUtdWiX9ydoHCf/w2QspC4ZT9ShXZ78QCVjRh3a5YWLjTAMr66urreWC5WMkDo0BkbZTUQ+UkfCQE/9Tl6oI2EgVsn4Rh0JB+pxElAHwsE0S4ZPHQgHq+x34veoI2EgVMkYUEfCwHOWDNGmjoSB12ygISbUkTDQyZIRjKkjYaApsmR0qCNhoK2S8R/O4T8YZMmQP6kjYaDnZ8lYUEfCQKyS8ZU6Eg7UTG3ab1owrtfAdq6masIGWa9l95VuWbQKYkjdPDPaNeIqzFvUzTPzbDEZQc06hndrMxn1umN43o1uX6mCXNxQN85UZC8ZNXuUePuZWvXq1zG8xFoyGl3qthkb2UpGHefBPVv3DFGzMcZW11Iugu/ULSuhNbWUjPrdMTZWdnJRx47heY9WhqCyXnN3xcpMTT5TN6ucpY1kiHp2DO+7hWTUdnl5aGGgwbpjTJbXWr+rzwXrcrkb/2OZ3/t6vyoFI+oW66m9kUuRS+oWF7A4MT1KMO4YXlx2G6DcT4h5TWn8qZywVDZ8zh3jH5QZqjPvGOVpTyEUEK5Wh5XoGc52jLELHaPb198UE3VRcvL+uSyRC3YV+U2/4HGpDmCFRReVf7JyqyftFY6x5Cq9aGhnIMauAGhcnIxduHd2tlhFciK4S0vWBdOyQO6GRDNRcFHpaRy7O4bnda70ZtnwsPW0/+zXcenfGkbpcLzoujs/nYJ9x1hRh2vZq8Hz1Xe7YxhV9sg76mAt6xncM0SfOtpCsd7pK7b6c2c6xuu39EUAR4iHdEDQvBfpiwKyD/OyT87vF8w7xk3B2qf8vLmg7Vc59PpC3d5CRV9rmoyvVeaCd8coTIa/PXlU5Zg8zS5j0drX2dUxJ0J7gfEPSDSpm3tKS+fggu4RI8PFYLcHn4blTcLpA38tk0lJo/FAHa9VfaPVH7c7RmLULxpT6niLtG7DvB/Zx53wTI9ma8GC86nYbiM4WK/KdvzCotKEf1nhuudcMj9798XuRod9W6UJQUTd4CJf3n2zuwpVa0dLJHV7Cw39gylqsHsFwkBoJrFvqdPMcU/wmZ++akc5b4dLR9FRHVUK+pL/8HwR5zuGMfX7cXpIfS61wTztaSczRajDr9YPNdrUT2L11o71p/a6ZNFXupNdz/MDWnGStEtIkvT/OFcDmxs1h5MSLer1o7FrtWztu83wQwSmFc6jhdy+fnfhVL94zhb4ArMN9CgrZZEPDj1Mlm/LFr7JksTwbZoT1PSYzRG5whaToptBbsrHe2Ji4GBtb37+/+X3GAJX7hoHB+Hvz/63QX76W88zm0c85b5hg4MRB1VjzrxjdpZLhsH2YH5hpIbvQtDI9QyTXaB8z5DOPFon+1aZlDnn3qzgs99VPJ96MZU0q9NThdSS+yKXkd7LZiQppXg0m2TECz/9t3u3Ktri6NfL3ZN5mybLz6vZxKn1PgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYOUv7vZZDxSiomsAAAAASUVORK5CYII=" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">Cart summary</h5>
+          <div class="table-respnsive">
+            <table class="table">
+              <tbody>
+                <tr>
+                  <td>Total Price</td>
+                  <td>{{cart.cartPrice | currency}}</td>
+                </tr>
+                <tr>
+                  <td>Total Items</td>
+                  <td>{{cart.itemCount}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="card-footer">
+            <button type="button" class="btn btn-success d-block mx-auto" 
+            data-toggle="modal" data-target="#exampleModal">
+              Checkout
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

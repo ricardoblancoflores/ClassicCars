@@ -1,0 +1,13 @@
+.background-notFound {
+    background-image: url("https://cdn.wallpapersafari.com/2/43/w3rBVS.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.bg-opacity {
+    -webkit-box-orient: vertical;
+    background-color: aliceblue;
+    opacity: .2;
+}
+.opacity-full {
+    opacity: 1;
+}

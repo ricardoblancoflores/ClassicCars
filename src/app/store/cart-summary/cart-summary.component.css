@@ -1,0 +1,17 @@
+.btn-circle {
+    height: 40px;
+    width: 40px;
+    padding: 0;
+    border-radius: 50%;
+}
+.btn-icon-anim {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    border: none;
+    padding: 11px;
+}
+.icon-cart {
+    line-height: 1;
+    margin-bottom: 4px 
+}

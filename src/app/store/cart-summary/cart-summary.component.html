@@ -1,0 +1,15 @@
+<div class="pull-xs-rigth">
+  <small>
+    <span class="mx-1 px-2 text-white" *ngIf="cart.itemCount > 0">
+      {{cart.itemCount}} item (s)
+      {{cart.cartPrice | currency}}
+    </span>
+    <span class="mx-1 px-2 text-white" *ngIf="cart.itemCount == 0">
+      (empty)
+    </span>
+    <button routerLink="/cart" routerLinkActive="active"  class="btn btn-warning btn-icon-anim btn-circle"
+    [disabled]="cart.itemCount == 0">
+      <i class="fas fa-shopping-cart text-white icon-cart"></i>
+    </button>
+  </small>
+</div>
