@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 const PROTOCOL = 'http';
-const PORT = '8080';
+const PORT = '80';
 @Injectable({
   providedIn: 'root'
 })
