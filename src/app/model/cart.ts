@@ -17,12 +17,12 @@ export class Cart {
         this.recalculate();
     }
 
-    editQuantity(line: CartLine, action: string){
-        if (action == "increase") {
-            line.quantity++;
-        } else {
-            line.quantity--;
-        }
+    addQuantity(line: CartLine){
+        line.quantity++;
+    }
+
+    subtractQuantity(line: CartLine){
+        line.quantity--;
     }
 
     deleteCartLine(index: number){

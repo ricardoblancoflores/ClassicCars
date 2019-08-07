@@ -8,6 +8,7 @@ import { Cart, CartLine } from 'src/app/model/cart';
 })
 export class CartComponent implements OnInit {
 
+  private currentIndex: number;
   constructor(private cart: Cart) { }
 
   ngOnInit() {
@@ -17,13 +18,18 @@ export class CartComponent implements OnInit {
     return this.cart.getLines();
   }
 
-  editQuantity(prod: CartLine, act: string){
-    this.cart.editQuantity(prod, act);
+  addQuantity(line: CartLine){
+    this.cart.addQuantity(line);
     this.cart.recalculate()
   }
 
-  deleteItem(index: number){
-    this.cart.deleteCartLine(index);
+  subtractQuantity(line: CartLine){
+    this.cart.subtractQuantity(line);
+    this.cart.recalculate()
+  }
+
+  deleteItem(){
+    this.cart.deleteCartLine(this.currentIndex);
     this.cart.recalculate();
   }
 }
