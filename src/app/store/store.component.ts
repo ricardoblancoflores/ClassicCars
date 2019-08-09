@@ -22,11 +22,9 @@ export class StoreComponent implements OnInit {
   public currentMSRP: number = 0;
   public currentQuantity: number = 1;
   ngOnInit() {
-
   }
 
   confirmAdd(p:Product){
-    this.currentQuantity=1;
     this.currentProduct = p;
     this.currentMSRP = p.MSRP;
     this.currentName = p.productName;
@@ -90,5 +88,8 @@ export class StoreComponent implements OnInit {
     this.publicSelectedPage = 1;
     this.selectedScale = newScale === "All" ? null : newScale;
     console.log(this.selectedScale);
+  }
+  stop(event: Event) {
+    event.stopPropagation();
   }
 }

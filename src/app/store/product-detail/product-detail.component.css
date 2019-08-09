@@ -1,0 +1,18 @@
+.card-view {
+    background: #fff;
+    margin-bottom: 12px;
+    margin-left: -9px;
+    margin-right: -9px;
+    border: none;
+    border-radius: 0;
+    padding: 15px 15px 0;
+}
+.collapse {
+    display: none;
+}
+.card-view.panel .panel-body {
+    padding: 15px 0 15px;
+}
+.collapse.in {
+    display: block;
+}

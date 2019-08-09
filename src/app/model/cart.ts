@@ -17,6 +17,20 @@ export class Cart {
         this.recalculate();
     }
 
+    updateLine(product: Product, quantity: number = 1){
+        const line = this.lines.find(line => line.product.productCode == product.productCode);
+        if(line === undefined){
+            this.lines.push(new CartLine(product, quantity));
+        }else {
+            line.quantity =  quantity;
+        }
+        this.recalculate();
+    }
+
+    getLine(product: Product){
+        const line = this.lines.find(line => line.product.productCode == product.productCode);
+        return line;
+    }
     addQuantity(line: CartLine){
         line.quantity++;
     }

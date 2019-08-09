@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Product } from './product';
 import { ProductDatasourceService } from './product-datasource.service';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -38,5 +39,9 @@ public scales : string[] = [];
      return this.products.filter((Product, i, a) => category === null || Product.productLine === category)
      .filter((Product, i, a) => vendor === null || Product.productVendor === vendor)
      .filter((Product, i, a) => scale === null || Product.productScale === scale);
+   }
+
+   getProduct(productCode: string): Product{
+     return this.products.find((product) => productCode == product.productCode);
    }
 }
